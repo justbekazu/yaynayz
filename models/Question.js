@@ -26,8 +26,15 @@ Question.init(
         shortcode: {
             type: DataTypes.STRING,
             allowNull: false
-        }
-    },
+        },
+        vote_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+            model: 'vote',
+            key: 'id'
+        },   
+    }
     {
         sequelize,
         freezeTableName: true,
