@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS yaynayz_db;
+
+CREATE DATABASE yaynayz_db;
