@@ -21,8 +21,12 @@ Question.init(
                 model: 'author',
                 key: 'id'
             }
+        },
+        // every question will have a short code
+        shortcode: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
-        // need to create short code to generate specific question numbers
     },
     {
         sequelize,
