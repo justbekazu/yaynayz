@@ -7,9 +7,8 @@ class Vote extends Model {}
 
 Vote.init({
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+        type: DataTypes.BOOLEAN,
+        primaryKey: true
     },
 }, {
     sequelize,
