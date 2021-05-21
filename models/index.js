@@ -3,30 +3,24 @@ const Question = require('./Question');
 const Vote = require('./Vote');
 
 Author.hasMany(Question, {
-    foreignKey: 'username'
-});
-Question.belongsTo(Author, {
-    foreignKey: 'username',
-    onDelete: "cascade"
+    foreignKey: 'author_id'
 });
 
-Vote.belongsTo(Author, {
-    foreignKey: 'username',
-    onDelete: "cascade"
+Question.belongsTo(Author, {
+    foreignKey: 'author_id',
+    onDelete: "CASCADE"
 });
 
 Vote.belongsTo(Question, {
     foreignKey: 'question_id',
-    onDelete: "cascade"
+    onDelete: "CASCADE"
 });
 
-Author.hasMany(Vote, {
-    foreignKey: 'username',
-    onDelete: "cascade"
+Author.hasMany(Question, {
+    foreignKey: 'author_id',
 });
 
 Question.hasMany(Vote, {
     foreignKey: 'vote_id',
-    onDelete: "cascade"
 })
 module.exports = { Author, Question, Vote };
