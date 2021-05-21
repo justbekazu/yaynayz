@@ -15,6 +15,12 @@ Question.init(
             type: DataTypes.STRING[140],
             allowNull: false
         },
+        author_id: {
+            references: {
+                model: 'author',
+                key: 'id'
+            }
+        }
         // need to create short code to generate specific question numbers
     },
     {
