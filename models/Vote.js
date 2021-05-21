@@ -8,6 +8,7 @@ class Vote extends Model {}
 Vote.init({
     id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         primaryKey: true,
         autoIncrement: true
     },
@@ -17,7 +18,11 @@ Vote.init({
       references: {
         model: 'question',
         key: 'id'
-      }
+      },
+    answer: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
 }, {
     sequelize,
     freezeTableName: true,
