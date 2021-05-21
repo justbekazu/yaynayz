@@ -25,4 +25,4 @@ Question.init(
     }
 );
 
-module.exports = Questions;
+module.exports = Question;

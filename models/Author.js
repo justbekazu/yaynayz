@@ -14,7 +14,7 @@ class Author extends Model {
 Author.init(
   {
     username: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull:false,
         unique: true,
         validate: {
@@ -23,13 +23,19 @@ Author.init(
 
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
            
             len: [4]
         }
+    },
+    email: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        unique: true
     }
+   
   },
   {
     hooks: {
