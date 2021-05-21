@@ -33,8 +33,9 @@ Question.init(
             references: {
             model: 'vote',
             key: 'id'
-        },   
-    }
+        },
+      }, 
+    },
     {
         sequelize,
         freezeTableName: true,
