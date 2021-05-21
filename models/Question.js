@@ -11,11 +11,12 @@ Question.init(
             primaryKey: true,
             autoIncrement: true
         },
-        question: {
+        title: {
             type: DataTypes.STRING[140],
             allowNull: false
         },
         author_id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: 'author',
                 key: 'id'
