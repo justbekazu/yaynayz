@@ -6,6 +6,6 @@ const voteRoutes = require('./vote-routes');
 
 router.use('/users', userRoutes);
 router.use('/questions', questionRoutes);
-router.use('/votess', voteRoutes);
+router.use('/votes', voteRoutes);
 
 module.exports = router;
