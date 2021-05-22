@@ -23,10 +23,11 @@ Vote.init({
       type: DataTypes.BOOLEAN,
       allowNull: false
     },
-}, {
+}, 
     sequelize,
     freezeTableName: true,
     underscored: true,
     modelName: 'vote'
+
 });
 module.exports = Vote;
