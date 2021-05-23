@@ -64,6 +64,9 @@ Author.init(
             return updatedAuthorData;
         }
     },
+
+   
+
     
     sequelize,
     timestamps: false,
@@ -71,6 +74,8 @@ Author.init(
     underscored: true,
     modelName: 'author'
   }
+
+
 );
 
 module.exports = Author;
