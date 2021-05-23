@@ -20,7 +20,7 @@ Link to the Project Slides: Coming Soon=!
 https://gentle-thicket-32147.herokuapp.com/
 
 ## Sreenshot
-Coming soon!
+Coming very soon!
 
 ## Built With...
 * Bootstrap  (https://getbootstrap.com/)
