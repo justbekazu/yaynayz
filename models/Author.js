@@ -6,8 +6,9 @@ const bcrypt = require('bcrypt');
 class Author extends Model {
     
     checkPassword(loginPW) {
-        return bcrypt.compareSync(loginPW, this.password);
+        return bcrypt.compareSync(loginPW, this.password);   
     }
+        
 }
 
 
