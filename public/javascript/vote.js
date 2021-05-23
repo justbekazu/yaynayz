@@ -1,7 +1,4 @@
 const votingPanel = document.querySelector("#voting-panel");
-const resultsPanel = document.querySelector("#results-panel");
-
-resultsPanel.hidden = true;
 
 document.querySelector('#btn-yay').addEventListener('click', voteYay);
 
@@ -25,13 +22,12 @@ async function voteYay(event) {
   });
 
   if (response.ok) {
-    alert("voted yay successfullY");
+    console.log("voted yay successfullY");
   } else {
     alert(response.statusText);
   }
 
   votingPanel.hidden = true;
-  resultsPanel.hidden = false;
 
 }
 document.querySelector('#btn-yay').addEventListener('click', voteYay);
@@ -56,13 +52,12 @@ async function voteNay(event) {
   });
 
   if (response.ok) {
-    alert("voted nay successfullY");
+    console.log("voted nay successfullY");
   } else {
     alert(response.statusText);
   }
 
   votingPanel.hidden = true;
-  resultsPanel.hidden = false;
 
 }
 document.querySelector('#btn-nay').addEventListener('click', voteNay);
