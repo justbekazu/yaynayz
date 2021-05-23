@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const sequelize = require('../config/connection'); // needed only if a literal (line 15ish) is required
+const sequelize = require('../config/connection'); // needed only if a literal (line 15ish) is required
 const { Question, Author, Vote } = require('../models');
 
 router.get('/', (req, res) => {
@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
       'shortcode',
       'created_at',
       'author_id',
-      //if we need a [sequelize.literal('(SELECT CO...)'),'vote count'] it would be here
     ],
     include: [
       {
@@ -45,7 +44,9 @@ router.get('/question/:id', (req, res) => {
       'id',
       'title',
       'created_at',
-      'shortcode'
+      'shortcode',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question_id = question.id AND vote.answer = true)'),'yay'],
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question_id = question.id AND vote.answer = false)'),'nay'],
     ],
     include: [
       {

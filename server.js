@@ -9,6 +9,7 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 var expirationCookie = 600000 // 60000 is 1 minute
+// there is an additional SetInterval function in script.js to send user to login
 
 const sess = {
   secret: 'Super secret secret',

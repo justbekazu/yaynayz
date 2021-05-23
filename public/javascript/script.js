@@ -1,5 +1,5 @@
-// Redirect user to homepage if idle for a minute
-var secondsLeft = 60;
+// Redirect user to homepage if idle for 10 minutes
+var secondsLeft = 600;
 function startTimer() {
   interval = setInterval(function () {
     secondsLeft--;

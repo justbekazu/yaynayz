@@ -32,7 +32,11 @@ router.get('/', withAuth, (req, res) => {
       })
       .then(author => {
       const questions = dbQuestionData.map(question => question.get({ plain: true }));
-      res.render('dashboard', { questions, username:author.username, loggedIn: true });
+      res.render('dashboard', { 
+        questions, 
+        username:author.username, 
+        loggedIn: true 
+      });
       })      
     })
     .catch(err => {
