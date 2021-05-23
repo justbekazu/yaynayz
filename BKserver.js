@@ -2,19 +2,20 @@ const path = require('path');
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
-
+const hbs = exphbs.create({ helpers });
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-var expirationCookie = 60000 // 600000 is 10 minutes
+var oneMin = 60000
 
 const sess = {
   secret: 'Super secret secret',
   rolling: true, // Force cookie to be set on every response, it will reset expiration to maxAge.
   cookie: {
-    expires: new Date(Date.now() + expirationCookie),
-    maxAge: expirationCookie
+    expires: new Date(Date.now() + oneMin),
+    maxAge: oneMin
   },
   resave: false,
   saveUninitialized: true,
@@ -25,6 +26,8 @@ const sess = {
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
