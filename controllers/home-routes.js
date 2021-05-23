@@ -1,24 +1,20 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
+// const sequelize = require('../config/connection'); // needed only if a literal (line 15ish) is required
 const { Question, Author, Vote } = require('../models');
 
 router.get('/', (req, res) => {
-  console.log(req.session);
+  //console.log(req.session);
   Question.findAll({
+    order: [['created_at', 'ASC']],
     attributes: [
       'id',
       'title',
+      'shortcode',
       'created_at',
+      'author_id',
+      //if we need a [sequelize.literal('(SELECT CO...)'),'vote count'] it would be here
     ],
     include: [
-      {
-        model: Vote,
-        attributes: ['id', 'vote_answer', 'question_id', 'created_at'],
-        include: {
-          model: Author,
-          attributes: ['username']
-        }
-      },
       {
         model: Author,
         attributes: ['username']
@@ -27,7 +23,7 @@ router.get('/', (req, res) => {
   })
     .then(dbQuestionData => {
       // pass a single post object into the homepage template
-      console.log(dbQuestionData[0]);
+      //console.log(dbQuestionData[0]);
       const questions = dbQuestionData.map(question => question.get({ plain: true }));
       res.render('homepage', {
         questions,
@@ -40,7 +36,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/post/:id', (req, res) => {
+router.get('/question/:id', (req, res) => {
   Question.findOne({
     where: {
       id: req.params.id
@@ -49,21 +45,21 @@ router.get('/post/:id', (req, res) => {
       'id',
       'title',
       'created_at',
+      'shortcode'
     ],
     include: [
       {
         model: Vote,
-        attributes: ['id', 'vote_answer', 'question_id', 'created_at'],
-        include: {
-          model: Author,
-          attributes: ['username']
-        }
+        attributes: ['id', 'answer', 'created_at']
       },
       {
         model: Author,
         attributes: ['username']
       }
-    ]
+    ],
+    where: {
+      id: req.params.id
+    },
   })
     .then(dbQuestionData => {
       if (!dbQuestionData) {
@@ -75,7 +71,7 @@ router.get('/post/:id', (req, res) => {
       const question = dbQuestionData.get({ plain: true });
 
       // pass data to template
-      res.render('single-post', {
+      res.render('single-question', {
         question,
         loggedIn: req.session.loggedIn
       });

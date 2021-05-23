@@ -1,0 +1,32 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+      <div class="col">
+        <h3><strong>{{username}} questions</strong></h3>
+      </div>
+      <div class="col text-end">
+        <a href="/dashboard/new/" class="btn btn-success">New Question</a>
+      </div>
+    </div>
+    {{#if questions.length}}
+    <div class="row">
+      {{#each questions as |question|}}
+      <div class="col-4 mt-3 mb-2">
+        {{> question-info-edit question }}
+      </div>
+      {{/each}}
+    </div>
+  {{else}}
+  <div class="row mt-3">
+    <div class="col text-center">
+      <h5 class="text-info">Start making questions!</h5>
+      <div class="text-center">
+        <img src="https://media.giphy.com/media/OP3gJDDTo477T4awiR/giphy.gif" class="rounded" alt="Do it now!">
+      </div>
+    </div>
+  </div>
+  {{/if}}
+</div>
+  <script>
+    var btnActive = document.getElementById("dashboardNav");
+    btnActive.className += " active";
+  </script>

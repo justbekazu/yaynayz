@@ -1,0 +1,11 @@
+<div class="row">
+{{#each questions as |question|}}
+<div class="col-4 mt-3 mb-2">
+    {{> question-info question }}
+</div>
+{{/each}}
+</div>
+<script>
+var btnActive = document.getElementById("homeNav");
+btnActive.className+= " active";
+</script>

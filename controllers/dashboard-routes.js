@@ -5,27 +5,21 @@ const { Question, Author, Vote } = require('../models');
 
 router.get('/', withAuth, (req, res) => {
   Question.findAll({
+    order: [['created_at', 'ASC']],
     where: {
       // use the ID from the session
-      user_id: req.session.user_id
+      author_id: req.session.author_id
     },
     attributes: [
       'id',
       'title',
+      'shortcode',
       'created_at',
     ],
     include: [
       {
         model: Vote,
-        attributes: ['id', 'vote_answer', 'question_id', 'created_at'],
-        include: {
-          model: Author,
-          attributes: ['username']
-        }
-      },
-      {
-        model: Author,
-        attributes: ['username']
+        attributes: ['id', 'answer', 'created_at'],
       }
     ]
   })
@@ -37,8 +31,8 @@ router.get('/', withAuth, (req, res) => {
         }
       })
       .then(author => {
-      const questions = dbQuestionData.map(post => post.get({ plain: true }));
-      res.render('dashboard', { questions, username:user.username, loggedIn: true });
+      const questions = dbQuestionData.map(question => question.get({ plain: true }));
+      res.render('dashboard', { questions, username:author.username, loggedIn: true });
       })      
     })
     .catch(err => {
@@ -52,21 +46,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
     attributes: [
       'id',
       'title',
+      'shortcode',
       'created_at',
-    ],
-    include: [
-      {
-        model: Vote,
-        attributes: ['id', 'vote_answer', 'question_id', 'created_at'],
-        include: {
-          model: Author,
-          attributes: ['username']
-        }
-      },
-      {
-        model: Author,
-        attributes: ['username']
-      }
     ]
   })
     .then(dbQuestionData => {
@@ -98,14 +79,6 @@ router.get('/new/', withAuth, (req, res) => {
     ],
     include: [
       {
-        model: Vote,
-        attributes: ['id', 'vote_answer', 'question_id', 'created_at'],
-        include: {
-          model: Author,
-          attributes: ['username']
-        }
-      },
-      {
         model: Author,
         attributes: ['username']
       }
@@ -113,8 +86,8 @@ router.get('/new/', withAuth, (req, res) => {
   })
     .then(dbQuestionData => {
       // serialize data before passing to template
-      const questions = dbQuestionData.map(post => question.get({ plain: true }));
-      res.render('new-post', { questions, loggedIn: true });
+      const questions = dbQuestionData.map(question => question.get({ plain: true }));
+      res.render('new-question', { questions, loggedIn: true });
     })
     .catch(err => {
       console.log(err);

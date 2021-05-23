@@ -2,12 +2,13 @@ const path = require('path');
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
-
+const hbs = exphbs.create({ helpers });
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-var expirationCookie = 60000 // 600000 is 10 minutes
+var expirationCookie = 600000 // 60000 is 1 minute
 
 const sess = {
   secret: 'Super secret secret',
@@ -25,6 +26,8 @@ const sess = {
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

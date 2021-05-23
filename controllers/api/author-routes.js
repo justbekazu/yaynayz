@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
   })
   .then(dbAuthorData => {
     req.session.save(() => {
-      req.session.user_id = dbAuthorData.id;
+      req.session.author_id = dbAuthorData.id;
       req.session.username = dbAuthorData.username;
       req.session.loggedIn = true;
   
@@ -84,11 +84,11 @@ router.post('/login', (req, res) => {
 
     req.session.save(() => {
       // declare session variables
-      req.session.user_id = dbAuthorData.id;
+      req.session.author_id = dbAuthorData.id;
       req.session.username = dbAuthorData.username;
       req.session.loggedIn = true;
 
-      res.json({ user: dbAuthorData, message: 'You are now logged in!' });
+      res.json({ author: dbAuthorData, message: 'You are now logged in!' });
     });
   });
 });
