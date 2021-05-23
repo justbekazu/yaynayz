@@ -1,17 +1,20 @@
 const { Author } = require('../models');
 
 const authorData = [{
-        username: 'Kate',
-        password: 'kate'
+        username: 'kate@email.com',
+        password: 'kate',
+        author_id: 1,
 
     },
     {
-        username: 'Tim',
-        password: 'tim'
+        username: 'Tim@gmail.com',
+        password: 'tim',
+        author_id: 2
     },
     {
-        username: 'Bill',
-        password: 'bill'
+        username: 'Bill@yahoo.com',
+        password: 'bill',
+        author_id: 3
     }
 ];
 
