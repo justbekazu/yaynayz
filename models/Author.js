@@ -52,15 +52,15 @@ Author.init(
   {
     hooks: {
         
-        async beforeCreate(newUserData) {
-            newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            return newUserData;
+        async beforeCreate(newAuthorData) {
+            newAuthorData.password = await bcrypt.hash(newAuthorData.password, 10);
+            return newAuthorData;
             
         },
        
-        async beforeUpdate(updatedUserData) {
-            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-            return updatedUserData;
+        async beforeUpdate(updatedAuthorData) {
+            updatedAuthorData.password = await bcrypt.hash(updatedAuthorData.password, 10);
+            return updatedAuthorData;
         }
     },
     
