@@ -178,42 +178,34 @@ footer {
 }
 
 .chart-container {
-  animation: fadein 3s;
-  -moz-animation: fadein 3s; /* Firefox */
-  -webkit-animation: fadein 3s; /* Safari and Chrome */
-  -o-animation: fadein 3s; /* Opera */
+  animation: .5s ease 0s normal forwards 1 fadein;
+  -moz-animation: .5s ease 0s normal forwards 1 fadein; /* Firefox */
+  -webkit-animation: .5s ease 0s normal forwards 1 fadein; /* Safari and Chrome */
+  -o-animation: .5s ease 0s normal forwards 1 fadein; /* Opera */
 }
-@keyframes fadein {
-  from {
-      opacity:0;
-  }
-  to {
-      opacity:1;
-  }
+
+@keyframes fadein{
+  0%{opacity:0}
+  80%{opacity:0}
+  100%{opacity:1}
 }
-@-moz-keyframes fadein { /* Firefox */
-  from {
-      opacity:0;
-  }
-  to {
-      opacity:1;
-  }
+
+@-moz-keyframes fadein{
+  0%{opacity:0}
+  80%{opacity:0}
+  100%{opacity:1}
 }
-@-webkit-keyframes fadein { /* Safari and Chrome */
-  from {
-      opacity:0;
-  }
-  to {
-      opacity:1;
-  }
+
+@-webkit-keyframes fadein{
+  0%{opacity:0}
+  80%{opacity:0}
+  100%{opacity:1}
 }
-@-o-keyframes fadein { /* Opera */
-  from {
-      opacity:0;
-  }
-  to {
-      opacity: 1;
-  }
+
+@-o-keyframes fadein{
+  0%{opacity:0}
+  80%{opacity:0}
+  100%{opacity:1}
 }
 
 .hidden {
