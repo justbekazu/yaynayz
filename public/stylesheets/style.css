@@ -178,10 +178,10 @@ footer {
 }
 
 .chart-container {
-  animation: 1.5s ease 0s normal forwards 1 fadein;
-  -moz-animation: 1.5s ease 0s normal forwards 1 fadein; /* Firefox */
-  -webkit-animation: 1.5s ease 0s normal forwards 1 fadein; /* Safari and Chrome */
-  -o-animation: 1.5s ease 0s normal forwards 1 fadein; /* Opera */
+  animation: 1s ease 0s normal forwards 1 fadein;
+  -moz-animation: 1s ease 0s normal forwards 1 fadein; /* Firefox */
+  -webkit-animation: 1s ease 0s normal forwards 1 fadein; /* Safari and Chrome */
+  -o-animation: 1s ease 0s normal forwards 1 fadein; /* Opera */
 }
 
 @keyframes fadein{
