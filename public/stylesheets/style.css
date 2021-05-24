@@ -178,6 +178,9 @@ footer {
 }
 
 .chart-container {
-  width: 300px;
-  height:300px
+  padding-left: 0px;
+}
+
+.hidden {
+  visibility: hidden;
 }

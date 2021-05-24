@@ -1,13 +1,11 @@
 <div class="card mt-3" style="border: 0">
   <div class="card-body">
+    <a href="/"><button class="btn btn-secondary mb-3">Back</button></a>
+    <input id="question-id" style="display: none;" value="{{id}}">
     <h5 class="card-title"><strong>{{title}}</strong></h5>
     <h6 class="card-subtitle mb-2 text-primary"><strong>Shortcode {{shortcode}}</strong></h6>
     <h6 class="text-secondary">by {{author.username}} on {{format_date created_at}}</h6>
     <br>
-    <div id="voting-panel">
-      <button class="btn btn-primary" id="btn-yay" value="true">YAY</button> <button class="btn btn-danger" id="btn-nay"
-        value="false">NAY</button>
-    </div>
     <div class="chart-container" id="results-panel">
       <canvas id="myChart" style="width: 100px"></canvas>
     </div>
@@ -16,7 +14,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.1/chart.min.js"></script>
 <script>
-  function doChart() {
     var delayed;
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
@@ -25,45 +22,32 @@
         labels: ['Yay', 'Nay'],
         datasets: [{
           data: [{{ yay }}, {{ nay }}],
-      backgroundColor: [
-        'rgba(54, 162, 235, 0.5)',
-        'rgba(255, 99, 132, 0.5)'
-      ],
-
-      borderWidth: 0
-    }]
+          backgroundColor: [
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 99, 132, 0.5)'
+          ],
+          borderWidth: 0
+          }]
         },
-  options:
-  {
-    indexAxis: 'y',
-      plugins: {
-      legend: {
-        display: false,
-            }
-    },
-    animations: {
-      onComplete: () => {
-        delayed = true;
-      },
-        delay: (context) => {
-          let delay = 0;
-          if (context.type === 'data' && context.mode === 'default' && !delayed) {
-            delay = context.dataIndex * 300 + context.datasetIndex * 100;
-          }
-          return delay;
-        },
+        options:{
+          indexAxis: 'y',
+          plugins: {
+            legend: {display: false}
           },
-    scales: {
-      x: {
-        stacked: true,
+          animations: {
+            onComplete: () => {delayed = true;},
+            delay: (context) => {
+              let delay = 0;
+              if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                  delay = context.dataIndex * 300 + context.datasetIndex * 100;
+              }
+              return delay;
             },
-      y: {
-        stacked: true
-      }
-    }
-  }
+          },
+          scales: {
+            x: {stacked: true},
+            y: {stacked: true}
+          }
+        }
     });
-    }
-  document.querySelector('#btn-yay').addEventListener('click', doChart);
-  document.querySelector('#btn-nay').addEventListener('click', doChart);
 </script>

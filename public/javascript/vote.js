@@ -1,15 +1,27 @@
-const votingPanel = document.querySelector("#voting-panel");
-
-document.querySelector('#btn-yay').addEventListener('click', voteYay);
-
-async function voteYay(event) {
-  event.preventDefault();
-
-  const answer = document.querySelector('#btn-yay').value;
-  const question_id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
+var vote = window.location.toString().split('?')[
+  window.location.toString().split('?').length - 1
   ];
 
+console.log(vote);
+
+if (vote==1){
+  voteYay();
+}
+
+if (vote==0){
+  voteNay();
+}
+
+async function voteYay(event) {
+  //event.preventDefault();
+
+  var answer = vote;
+  // const question_id = window.location.toString().split('/')[
+  //   window.location.toString().split('/').length - 1
+  // ];
+  const question_id = document.querySelector('#question-id').value;
+  //console.log(question_id);
+  
   const response = await fetch(`/api/votes`, {
     method: 'POST',
     body: JSON.stringify({
@@ -27,18 +39,17 @@ async function voteYay(event) {
     alert(response.statusText);
   }
 
-  votingPanel.hidden = true;
-
 }
-document.querySelector('#btn-yay').addEventListener('click', voteYay);
 
 async function voteNay(event) {
-  event.preventDefault();
+  //event.preventDefault();
 
-  const answer = document.querySelector('#btn-nay').value;
-  const question_id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
-  ];
+  var answer = vote;
+  //const answer = document.querySelector('#btn-nay').value;
+  // const question_id = window.location.toString().split('/')[
+  //   window.location.toString().split('/').length - 1
+  // ];
+  const question_id = document.querySelector('#question-id').value;
 
   const response = await fetch(`/api/votes`, {
     method: 'POST',
@@ -57,7 +68,4 @@ async function voteNay(event) {
     alert(response.statusText);
   }
 
-  votingPanel.hidden = true;
-
 }
-document.querySelector('#btn-nay').addEventListener('click', voteNay);
