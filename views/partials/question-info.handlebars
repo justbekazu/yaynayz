@@ -1,11 +1,12 @@
 <div class="card">
   <div class="card-body">
+    <input id="question-id{{id}}" style="display: none;" value="{{id}}">
     <h5 class="card-title"><strong>{{format_title title}}</strong></h5>
     <h6 class="card-subtitle mb-2 text-primary"><strong>Shortcode {{shortcode}}</strong></h6>
     <h6 class="text-secondary">by {{author.username}} on {{format_date created_at}}</h6>
     <div id="voting-panel">
-      <a href="/question/{{id}}?1"><button class="btn btn-primary" id="btn-yay" value="true">YAY</button></a> 
-      <a href="/question/{{id}}?0"><button class="btn btn-danger" id="btn-nay" value="false">NAY</button></a>
+      <button class="btn btn-primary" id="btn-vote" value="{{id}}|true">YAY</button>
+      <button class="btn btn-danger" id="btn-vote" value="{{id}}|false">NAY</button>
     </div>
   </div>
 </div>
