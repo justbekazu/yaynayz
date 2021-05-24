@@ -39,6 +39,9 @@ async function voteYay(event) {
     alert(response.statusText);
   }
 
+  window.location = window.location.toString().split('?')[
+    window.location.toString().split('?').length - 2
+    ];
 }
 
 async function voteNay(event) {
@@ -68,4 +71,9 @@ async function voteNay(event) {
     alert(response.statusText);
   }
 
+  window.location = window.location.toString().split('?')[
+    window.location.toString().split('?').length - 2
+    ];
+    
 }
+
