@@ -9,8 +9,7 @@ class Author extends Model {
     }
         
 }
-var val = Math.floor(1000 + Math.random() * 9000);
-console.log(val);
+
 Author.init(
   {
       // define an id column
