@@ -8,6 +8,20 @@ body, html {
   margin: 0;
   font-family: sans-serif;
   color: #333;
+  background: #bce6f4;
+}
+
+.nav-active {
+  color:#225ca3;
+}
+
+.navbar {
+  background: #9c1f1f;
+}
+
+.nav-link,
+.navbar-brand {
+    color: #fff;
 }
 
 a {

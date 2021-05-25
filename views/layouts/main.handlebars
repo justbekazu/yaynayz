@@ -19,7 +19,7 @@
 
 <body class="d-flex flex-column min-vh-100">
   <!-- Navigation -->
-  <nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg">
+  <nav class="navbar sticky-top navbar-dark navbar-expand-lg">
     <div class="container-fluid">
       <div class="navbar-brand-centered"><a class="navbar-brand" href="/"><span class="logo"><img src="/img/favicon.ico" width="20">YayNayz!</span></a></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -28,12 +28,11 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item"><a class="nav-link" href="/" id="homeNav">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="/dashboard" id="dashboardNav">My Questions</a></li>
           {{#if loggedIn}}
           <li class="nav-item"><a class="nav-link" href="/" id="logoutNav">Logout</a></li>
           {{else}}
-          <li class="nav-item"><a class="nav-link" href="/login" id="loginNav">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login" id="loginNav">Login / Sign up</a></li>
           {{/if}}
         </ul>
       </div>

@@ -1,12 +1,18 @@
-<div class="card">
+<div class="card" style="border-radius:10px; border: none;">
   <div class="card-body">
     <input id="question-id{{id}}" style="display: none;" value="{{id}}">
-    <h5 class="card-title"><strong>{{format_title title}}</strong></h5>
+    <h5 class="card-title"><strong>{{title}}</strong></h5>
     <h6 class="card-subtitle mb-2 text-primary"><strong>Shortcode {{shortcode}}</strong></h6>
     <h6 class="text-secondary">by {{author.username}} on {{format_date created_at}}</h6>
-    <div id="voting-panel">
-      <button class="btn btn-primary" id="btn-vote" value="{{id}}|true">YAY</button>
-      <button class="btn btn-danger" id="btn-vote" value="{{id}}|false">NAY</button>
+    <div class="container">
+    <div class="row" id="voting-panel">
+      <div class="col-6">
+        <button class="col-12 btn btn-primary" id="btn-vote" value="{{id}}|true">YAY</button>
+      </div>
+      <div class="col-6">
+        <button class="col-12 btn btn-danger" id="btn-vote" value="{{id}}|false">NAY</button>
+      </div>
+    </div>      
     </div>
   </div>
 </div>

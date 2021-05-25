@@ -7,10 +7,8 @@
 </div>
 
 <script>
-var btnActive = document.getElementById("homeNav");
-btnActive.className+= " active";
-
 document.addEventListener('click', function(e) {
+  try {
     e = e;
     var target = e.target,
         result = target.value; 
@@ -37,6 +35,14 @@ document.addEventListener('click', function(e) {
           }
         }
         vote();
+        // here we can do stuff localstorage
+
       }
+  }
+  catch(err) {
+  return;
+  }
 }, false);
+
+
 </script>
