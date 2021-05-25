@@ -54,6 +54,38 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.get('/shortcode/:shortcode', (req, res) => {
+  Question.findOne({
+    attributes: [
+      'id',
+      'title',
+      'shortcode',
+      'created_at',
+      'author_id'
+    ],
+    include: [
+      {
+        model: Vote,
+        attributes: ['id', 'answer', 'created_at']
+      },
+    ],
+    where: {
+      shortcode: req.params.shortcode
+    },
+  })
+    .then(dbQuestionData => {
+      if (!dbQuestionData) {
+        res.status(404).json({ message: 'No Question found with this shortcode' });
+        return;
+      }
+      res.json(dbQuestionData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.post('/', withAuth, (req, res) => { // delete withAuth to test without session
   Question.create({
     title: req.body.title,

@@ -58,9 +58,6 @@ router.get('/question/:id', (req, res) => {
         attributes: ['username']
       }
     ],
-    where: {
-      id: req.params.id
-    },
   })
     .then(dbQuestionData => {
       if (!dbQuestionData) {
@@ -81,6 +78,44 @@ router.get('/question/:id', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get('/shortcode/:id', (req, res) => {
+  Question.findAll({
+    where: {
+      shortcode: req.params.id
+    },
+    attributes: [
+      'id',
+      'title',
+      'shortcode',
+      'created_at',
+      'author_id',
+    ],
+    include: [
+      {
+        model: Author,
+        attributes: ['username']
+      }
+    ]
+  })
+  .then(dbQuestionData => {
+    if (dbQuestionData=="") {
+      res.render('empty', {});
+      return;
+    }
+    // pass a single post object into the homepage template
+    //console.log(dbQuestionData[0]);
+    const questions = dbQuestionData.map(question => question.get({ plain: true }));
+    res.render('shortcode', {
+      questions,
+      loggedIn: req.session.loggedIn
+    });
+    })
+  .catch(err => {
+    console.log(err);
+    res.render('empty', {});
+  });
 });
 
 router.get('/login', (req, res) => {

@@ -16,9 +16,11 @@
 
 <div class="row">
 {{#each questions as |question|}}
-<div class="col-lg-4 col-md-6 col-sm-12 mt-3 mb-2">
+<div class="col"></div>
+<div class="col-6 mt-3" style="width: 550px;">
     {{> question-info question }}
 </div>
+<div class="col"></div>
 {{/each}}
 </div>
 
@@ -70,5 +72,6 @@ document.addEventListener('click', function(e) {
   return;
   }
 }, false);
+
 
 </script>

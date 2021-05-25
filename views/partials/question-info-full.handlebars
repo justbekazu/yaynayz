@@ -30,8 +30,8 @@ function checkMobile(){
   if (check == false){
     $("#share").jsSocials({
     shares: ["email", "twitter", "facebook", "linkedin" ],
-    url: "https://gentle-thicket-32147.herokuapp.com/question/{{id}}",
-    text: "Yay or Nay? {{title}}",
+    url: "http://www.yaynayz.com/shortcode/{{shortcode}}",
+    text: "{{title}} Yay or Nay?",
     showCount: false,
     showLabel: false,
     shareIn: "popup",
@@ -40,8 +40,8 @@ function checkMobile(){
   else {
     $("#share").jsSocials({
     shares: ["email", "twitter", "facebook", "linkedin", "whatsapp", "messenger", "telegram" ],
-    url: "https://gentle-thicket-32147.herokuapp.com/question/{{id}}",
-    text: "Yay or Nay? {{title}}",
+    url: "http://www.yaynayz.com/shortcode/{{shortcode}}",
+    text: "{{title}} Yay or Nay? ",
     showCount: false,
     showLabel: false,
     shareIn: "popup",
