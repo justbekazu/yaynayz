@@ -18,6 +18,17 @@
 <script>
 var btnActive = document.getElementById("dashboardNav");
 btnActive.className+= " active";
+
+var randomletter = String.fromCharCode(97+Math.floor(Math.random() * 26))
+
+arr=[]
+while(arr.length < 3) {
+var randomnumber = Math.floor(Math.random()*10)
+if(arr.indexOf(randomnumber) > -1) continue;
+arr[arr.length] = randomnumber;
+}
+document.getElementById("question-shortcode").value = arr.join('')+randomletter;
+
 </script>
 
 <script src="/javascript/add-question.js"></script>

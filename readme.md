@@ -26,6 +26,8 @@ Coming very soon!
 * Bootstrap  (https://getbootstrap.com/)
 * Socket.IO (https://socket.io/)
 * Handlebars.JS (https://handlebarsjs.com/)
+* jsSocials (http://js-socials.com/)
+* Chartsjs (https://www.chartjs.org/)
 
 ## Contributions by...
 * Jason Bailey
