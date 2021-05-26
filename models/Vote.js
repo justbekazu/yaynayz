@@ -21,6 +21,10 @@ Vote.init({
         model: 'question',
         key: 'id'
       }
+    },
+    session_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
     }
 }, 
 {

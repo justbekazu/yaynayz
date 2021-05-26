@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Vote,
-        attributes: ['id', 'answer', 'created_at']
+        attributes: ['id', 'answer', 'created_at', 'session_id']
       },
     ],
     where: {

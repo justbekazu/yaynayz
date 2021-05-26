@@ -3,7 +3,6 @@ const sequelize = require('../config/connection'); // needed only if a literal (
 const { Question, Author, Vote } = require('../models');
 
 router.get('/', (req, res) => {
-  //console.log(req.session);
   Question.findAll({
     order: [['created_at', 'ASC']],
     attributes: [
@@ -51,7 +50,7 @@ router.get('/question/:id', (req, res) => {
     include: [
       {
         model: Vote,
-        attributes: ['id', 'answer', 'created_at']
+        attributes: ['id', 'answer', 'created_at', 'session_id']
       },
       {
         model: Author,
