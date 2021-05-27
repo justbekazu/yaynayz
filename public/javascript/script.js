@@ -12,4 +12,13 @@ function startTimer() {
 
 startTimer();
 
-
+// Shortcode searchbox
+function goShortcode(){
+  var newShortcode = document.querySelector("#search-field").value;
+  if (newShortcode){ 
+  document.location.replace('/shortcode/'+ newShortcode);
+  }
+  else {
+    alert("Please enter a shortcode");
+  }
+}

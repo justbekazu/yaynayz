@@ -1,79 +1,42 @@
-var vote = window.location.toString().split('?')[
-  window.location.toString().split('?').length - 1
-  ];
+// Vote
+document.addEventListener('click', function(e) {
+  try {
+    e = e;
+    var target = e.target,
+        result = target.value; 
+    var question_id = result.split('|')[result.split('|').length - 2];   
+    var answer = result.split('|')[result.split('|').length - 1];
 
-console.log(vote);
+    if (answer == "true" || answer == "false") {
+          async function vote(event) {          
+          const response = await fetch(`/api/votes`, {
+            method: 'POST',
+            body: JSON.stringify({
+              answer,
+              question_id,
+            }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
 
-if (vote==1){
-  voteYay();
-}
+          if (response.ok) {
+            document.location.replace('/question/'+question_id);
+          } else {
+            alert(response.statusText);
+          }
+        }
 
-if (vote==0){
-  voteNay();
-}
-
-async function voteYay(event) {
-  //event.preventDefault();
-
-  var answer = vote;
-  // const question_id = window.location.toString().split('/')[
-  //   window.location.toString().split('/').length - 1
-  // ];
-  const question_id = document.querySelector('#question-id').value;
-  //console.log(question_id);
-  
-  const response = await fetch(`/api/votes`, {
-    method: 'POST',
-    body: JSON.stringify({
-      answer,
-      question_id,
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-
-  if (response.ok) {
-    console.log("voted yay successfullY");
-  } else {
-    alert(response.statusText);
+        vote();
+        
+      }
   }
-
-  window.location = window.location.toString().split('?')[
-    window.location.toString().split('?').length - 2
-    ];
-}
-
-async function voteNay(event) {
-  //event.preventDefault();
-
-  var answer = vote;
-  //const answer = document.querySelector('#btn-nay').value;
-  // const question_id = window.location.toString().split('/')[
-  //   window.location.toString().split('/').length - 1
-  // ];
-  const question_id = document.querySelector('#question-id').value;
-
-  const response = await fetch(`/api/votes`, {
-    method: 'POST',
-    body: JSON.stringify({
-      answer,
-      question_id,
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-
-  if (response.ok) {
-    console.log("voted nay successfullY");
-  } else {
-    alert(response.statusText);
+  catch(err) {
+  return;
   }
+}, false);
 
-  window.location = window.location.toString().split('?')[
-    window.location.toString().split('?').length - 2
-    ];
-    
-}
+// Show and Hide voting panel
+
+
 

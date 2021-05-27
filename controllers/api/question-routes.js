@@ -15,7 +15,9 @@ router.get('/', (req, res) => {
       'author_id'
     ]
    })
-    .then(dbQuestionData => res.json(dbQuestionData))
+    .then(dbQuestionData => res.json(dbQuestionData)
+    // here we do the 2 queries and intersect... in a new object...
+    )
     .catch(err => {
       console.log(err);
       res.status(500).json(err);

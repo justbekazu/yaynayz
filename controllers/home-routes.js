@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
       'shortcode',
       'created_at',
       'author_id',
+      [sequelize.literal(`(SELECT JSON_ARRAYAGG(question_id) FROM vote WHERE session_id = '${req.sessionID}')`),'user_voted'],
     ],
     include: [
       {
@@ -27,7 +28,7 @@ router.get('/', (req, res) => {
         questions,
         loggedIn: req.session.loggedIn
       });
-      })
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -90,6 +91,7 @@ router.get('/shortcode/:id', (req, res) => {
       'shortcode',
       'created_at',
       'author_id',
+      [sequelize.literal(`(SELECT JSON_ARRAYAGG(question_id) FROM vote WHERE session_id = '${req.sessionID}')`),'user_voted'],
     ],
     include: [
       {

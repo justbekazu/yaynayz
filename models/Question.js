@@ -22,8 +22,6 @@ Question.init(
                 key: 'id'
             }
         },
-        // every question will have a short code
-        // pending:make it unique (must build a JS function that creates and then verifies)
         shortcode: {
             type: DataTypes.STRING,
             allowNull: false

@@ -1,18 +1,45 @@
+
 <div class="card" style="border-radius:10px; border: none;">
   <div class="card-body">
     <input id="question-id{{id}}" style="display: none;" value="{{id}}">
+    <input id="user-voted{{id}}" style="display: none;" value="{{user_voted}}">
     <h5 class="card-title"><strong>{{title}}</strong></h5>
     <h6 class="card-subtitle mb-2 text-primary"><strong>Shortcode {{shortcode}}</strong></h6>
     <h6 class="text-secondary mb-3">by {{author.username}} on {{format_date created_at}}</h6>
     <div class="container mt-3">
-    <div class="row" id="voting-panel">
+      {{!-- will be hidden if user has voted --}}
+    <div class="row" id="voting-panel{{id}}">
       <div class="col-6">
         <button class="col-12 btn btn-primary" id="btn-vote" value="{{id}}|true">YAY</button>
       </div>
       <div class="col-6">
         <button class="col-12 btn btn-danger" id="btn-vote" value="{{id}}|false">NAY</button>
       </div>
-    </div>      
+    </div> 
+      {{!-- /voting-panel --}}
+      {{!-- will be shown if user has voted --}}
+    <div class="row" id="results-panel{{id}}">
+      <div class="col">
+        <a href="/question/{{id}}"><button class="col-12 btn btn-warning" id="btn-results">SEE RESULTS</button></a>
+      </div>
+    </div> 
+      {{!-- /voting-panel --}}
     </div>
   </div>
 </div>
+
+<script>
+// switch the voting buttons with a results button if the user has voted
+var userVoted = document.querySelector(`#user-voted{{id}}`).value;
+var arrayVotes = userVoted.split(',');
+var boxId = document.querySelector(`#question-id{{id}}`).value;
+var voted = arrayVotes.includes(boxId);
+var resultsPanel = document.querySelector(`#results-panel{{id}}`);
+resultsPanel.hidden = true;
+
+if (voted) {
+  var votingPanel = document.querySelector(`#voting-panel{{id}}`);
+  votingPanel.hidden = true;
+  resultsPanel.hidden = false;
+}
+</script>
