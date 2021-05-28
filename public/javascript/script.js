@@ -25,12 +25,17 @@ function goShortcode(){
 
 
 //Check for Safari
-if (/apple/i.test(navigator.vendor)) {
-  history.pushState(null, document.title, location.href);
-  window.addEventListener('popstate', function (event)
-  {
-    confirm("Sorry! Safari sucks and you will have to use the Yellow Back Button");
-    history.pushState(null, document.title, location.href);
-  });
-}
+// if (/apple/i.test(navigator.vendor)) {
+//   history.pushState(null, document.title, location.href);
+//   window.addEventListener('popstate', function (event)
+//   {
+//     confirm("Sorry! Safari sucks and you will have to use the Yellow Back Button");
+//     history.pushState(null, document.title, location.href);
+//   });
+// }
 
+window.onpageshow = function(event) {
+  if (event.persisted) {
+      window.location.reload() 
+  }
+  };
