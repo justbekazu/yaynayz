@@ -21,7 +21,7 @@ document.addEventListener('click', function(e) {
           });
 
           if (response.ok) {
-            document.location = ('/question/'+question_id);
+            document.location.href = ('/question/'+question_id);
           } else {
             alert(response.statusText);
           }

@@ -28,7 +28,10 @@ router.get('/', (req, res) => {
         }
         return question;
       });
-      res.set('Cache-Control', 'no-store');
+      res.setHeader('Cache-Control', 'no-store, must-revalidate, max-age=0, proxy-revalidate, s-maxage=0');
+      res.setHeader('Pragma', 'no-cache'); // HTTP 1.0.
+      res.setHeader('Expires', '0'); // Proxies.
+      res.setHeader('Vary', '*')
       res.render('homepage', {
         questions,
         loggedIn: req.session.loggedIn
@@ -117,7 +120,10 @@ router.get('/shortcode/:id', (req, res) => {
         }
       return question;
     });
-    res.set('Cache-Control', 'no-store');
+    res.setHeader('Cache-Control', 'no-store, must-revalidate, max-age=0, proxy-revalidate, s-maxage=0');
+    res.setHeader('Pragma', 'no-cache'); // HTTP 1.0.
+    res.setHeader('Expires', '0'); // Proxies.
+    res.setHeader('Vary', '*');
     res.render('shortcode', {
       questions,
       loggedIn: req.session.loggedIn

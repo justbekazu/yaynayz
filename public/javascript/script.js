@@ -22,3 +22,15 @@ function goShortcode(){
     alert("Please enter a shortcode");
   }
 }
+
+
+//Check for Safari
+if (/apple/i.test(navigator.vendor)) {
+  history.pushState(null, document.title, location.href);
+  window.addEventListener('popstate', function (event)
+  {
+    alert("Sorry! Safari sucks and you will have to use the Yellow Back Button");
+    history.pushState(null, document.title, location.href);
+  });
+}
+
