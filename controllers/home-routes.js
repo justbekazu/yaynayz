@@ -23,7 +23,9 @@ router.get('/', (req, res) => {
     .then(dbQuestionData => {
       const questions = dbQuestionData.map(question => {
         question = question.get({ plain: true });
+        if (question.user_voted){
         question.hasVoted = question.user_voted.includes(question.id);
+        }
         return question;
       });
       res.set('Cache-Control', 'no-store');
@@ -110,7 +112,9 @@ router.get('/shortcode/:id', (req, res) => {
     }
     const questions = dbQuestionData.map(question => {
       question = question.get({ plain: true });
-      question.hasVoted = question.user_voted.includes(question.id);
+      if (question.user_voted){
+        question.hasVoted = question.user_voted.includes(question.id);
+        }
       return question;
     });
     res.set('Cache-Control', 'no-store');
