@@ -1,5 +1,5 @@
-// Redirect user to homepage if idle for 10 minutes
-var secondsLeft = 600;
+// Redirect user to homepage before cookie expires (so that it doesnt expire on the dashbaord)
+var secondsLeft = 599; // 600 would be 10 minutes 
 function startTimer() {
   interval = setInterval(function () {
     secondsLeft--;
