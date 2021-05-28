@@ -25,7 +25,7 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.href = ('/dashboard');
     } else {
       alert(response.statusText);
     }
@@ -69,7 +69,7 @@ async function signupFormHandler(event) {
     // check the response status
     if (response.ok) {
       console.log('success');
-      document.location.replace('/');
+      document.location.href = ('/');
     } else {
       alert(response.statusText);
     }

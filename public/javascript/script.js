@@ -5,7 +5,7 @@ function startTimer() {
     secondsLeft--;
     //console.log(secondsLeft);
     if (secondsLeft <= 0) {
-      document.location.replace('/');
+      document.location.href = ('/');
     }
   }, 1000);
 }
@@ -16,7 +16,7 @@ startTimer();
 function goShortcode(){
   var newShortcode = document.querySelector("#search-field").value;
   if (newShortcode){ 
-  document.location.replace('/shortcode/'+ newShortcode);
+    document.location.href = ('/shortcode/'+ newShortcode);
   }
   else {
     alert("Please enter a shortcode");
