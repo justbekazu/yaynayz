@@ -39,6 +39,7 @@ app.use(session(sess));
 app.use(routes);
 
 // turn on connection to db and server
+// remember to turn force to false or you will keep deleting the DB content
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
