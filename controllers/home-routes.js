@@ -21,9 +21,12 @@ router.get('/', (req, res) => {
     ]
   })
     .then(dbQuestionData => {
-      // pass a single post object into the homepage template
-      //console.log(dbQuestionData[0]);
-      const questions = dbQuestionData.map(question => question.get({ plain: true }));
+      const questions = dbQuestionData.map(question => {
+        question = question.get({ plain: true });
+        question.hasVoted = question.user_voted.includes(question.id);
+        return question;
+      });
+      res.set('Cache-Control', 'no-store');
       res.render('homepage', {
         questions,
         loggedIn: req.session.loggedIn
@@ -105,9 +108,12 @@ router.get('/shortcode/:id', (req, res) => {
       res.render('empty', {});
       return;
     }
-    // pass a single post object into the homepage template
-    //console.log(dbQuestionData[0]);
-    const questions = dbQuestionData.map(question => question.get({ plain: true }));
+    const questions = dbQuestionData.map(question => {
+      question = question.get({ plain: true });
+      question.hasVoted = question.user_voted.includes(question.id);
+      return question;
+    });
+    res.set('Cache-Control', 'no-store');
     res.render('shortcode', {
       questions,
       loggedIn: req.session.loggedIn
