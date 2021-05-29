@@ -21,6 +21,15 @@ Features include:
 ## Live App
 http://yaynayz.com (hosted in Heroku)
 
+## Installation
+- npm init -y
+- npm install express sequelize mysql2
+- npm install dotenv
+- npm install bcrypt
+- npm install express﻿-handlebars
+- npm i express-session connect-session-sequelize
+- npm i chart.js
+
 ## Built With
 * Bootstrap  (https://getbootstrap.com/)
 * Handlebars.JS (https://handlebarsjs.com/)
