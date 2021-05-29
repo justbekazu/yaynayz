@@ -18,7 +18,6 @@ Features include:
 
 ![YayNayz](https://user-images.githubusercontent.com/54341829/120085854-23556a00-c0a1-11eb-940a-907999d161a7.gif)
 
-
 ## Live App
 http://yaynayz.com (hosted in Heroku)
 
