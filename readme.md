@@ -2,44 +2,62 @@
 YAY or NAY your way to popularity
 
 ## Project Description
-Yaynayz is an app that puts all your questions to rest. With a simple yes or no (yay or nay) to questions you create, you'll get realtime results you can't argue with... but you'll probably argue with them anyway.
+![badge](https://img.shields.io/badge/license-MIT-blue)
 
-## How it works...
-An author wishing to post quesions will create a basic account that includes:
-* user name
-* email address
-* password
+Yaynayz is a useful polling/voting app for finding out quickly if people agree or disagree, want or don’t want, or like or dislike, something, anything. Simple and effective, Yaynayz can be used by your audience without logging on or even making an account.
 
-Questions are to be in a "yes" or "no" format.
+Questions must be formulated so that they can be answered with a "yay" (yes) or a "nay" (no).
 
-Users wishing to view questions and vote can do so without registering. Cookies will be required to vote (this keeps people from voting more than once per question). Once a vote is cast, the user can see the "real time" or current vote count. Users can open the app and see running totals for questions they've voted on. 
+Users wishing to view questions and vote can do so without registering. Session ID is used to identify who has voted and preventing users from voting twice. Once a vote is cast, the user can see the current vote count in a chart.
 
-Link to the Project Slides: Coming Soon=!
+Features include:
+- Anonymous Voting
+- Authors must register and create an account (username, email and password)
+- Search by Shortcode
+- Bar charts showing results
+
+![YayNayz](https://user-images.githubusercontent.com/54341829/120085854-23556a00-c0a1-11eb-940a-907999d161a7.gif)
+
 
 ## Live App
-https://gentle-thicket-32147.herokuapp.com/
+http://yaynayz.com (hosted in Heroku)
 
-## Sreenshot
-Coming very soon!
-
-## Built With...
+## Built With
 * Bootstrap  (https://getbootstrap.com/)
-* Socket.IO (https://socket.io/)
 * Handlebars.JS (https://handlebarsjs.com/)
+* Bcrypt
+* Express
+* JS-Socials
+* Chart.JS
+* Dotenv
+* Connect Session Sequelize
+* Mysql 2
 
-## Contributions by...
+## Contributors
 * Jason Bailey
 * Dj Rhoten 
 * Luis Cabrera
 * Kazu Hishida
 * Zach Puckett
-* Brooke Semke (maybe?)
 
 ## License...
-[MIT](https://choosealicense.com/licenses/mit/)
+MIT License Copyright
+(view most recent version at https://spdx.org/licenses/MIT.html)
 
-## Website...
- www.yaynayz.com
+Permission is hereby granted, free of charge, to any person obtaining a copy 
+of this software and associated documentation files (the "Software"), to deal 
+in the Software without restriction, including without limitation the rights 
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+copies of the Software, and to permit persons to whom the Software is 
+furnished to do so, subject to the following conditions:
 
-## Task Management On...
-yaynayz.monday.com (free trial version, 14 days)
+The above copyright notice and this permission notice shall be included in all 
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+SOFTWARE.
