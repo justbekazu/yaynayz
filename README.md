@@ -21,6 +21,9 @@ Features include:
 ## Live App
 http://yaynayz.com (hosted in Heroku)
 
+## Pitch Deck
+[YayNayz Pitch.pdf](https://github.com/luiscabrera77/yaynayz/files/6566985/YayNayz.Pitch.pdf)
+
 ## Installation
 - npm init -y
 - npm install express sequelize mysql2
